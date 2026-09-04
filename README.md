@@ -21,3 +21,13 @@ Organiser	Creates and manages events, defines categories and routes for their ev
 Participant	Registers with personal details (including date of birth and gender), browses public events and categories, enrols into a category, and views their own enrolment history and results.
 
 Role is not stored as a flag on a shared table — it's implicit in which table (Organiser or Participant) an account was created in, and the /api/auth/login endpoint checks both tables to determine which role to attach to the session.
+
+
+CI/CD Pipeline
+
+A GitHub Actions workflow (.github/workflows/validate.yml) runs on every push and pull request to main. It validates that:
+
+the /docs folder contains the ERD, Endpoint Plan, and SQL script, and
+the README contains all required sections.
+
+It optionally also spins up a SQL Server container and executes the SQL script against it to confirm the schema builds cleanly.
